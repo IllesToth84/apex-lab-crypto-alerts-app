@@ -1,1 +1,1 @@
-# apex-crypto-alerts
+# apex-lab-crypto-alerts-app
