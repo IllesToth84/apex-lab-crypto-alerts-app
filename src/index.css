@@ -5,16 +5,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
-    margin: 0;
     font-family: 'Roboto', sans-serif;
-    @apply bg-gray-900;
-    overflow: hidden;
+    @apply bg-gray-900 text-white overflow-hidden m-0;
 }
 
 h2.title {
     letter-spacing: 1px;
 }
-
 
 /* Customize the scrollbar for the monitor component */
 .orders-list::-webkit-scrollbar {

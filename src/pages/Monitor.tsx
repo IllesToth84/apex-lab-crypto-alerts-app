@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useWebSocket } from '../WebSocketContext';
 
 const Monitor: React.FC = () => {
-    const { socket } = useWebSocket();
+    const { socket, isFetching, setIsFetching } = useWebSocket();
     const [orders, setOrders] = useState<any[]>([]);
 
     useEffect(() => {
@@ -42,9 +42,12 @@ const Monitor: React.FC = () => {
         }
     }, [socket]);
 
+    // Effect to check if the orders list is empty and set loading accordingly
     useEffect(() => {
-        console.log('Updated orders:', orders);
-    }, [orders]);
+        if (orders.length > 0) {
+            setIsFetching(false); // Stop loading when the first order appears
+        }
+    }, [orders, setIsFetching]); // Include setIsFetching in the dependency arrays
 
     return (
         <div className="py-6 px-4 md:p-12 text-white">
@@ -56,6 +59,21 @@ const Monitor: React.FC = () => {
                     <span>Total (USD)</span>
                 </div>
                 <div className="h-[60vh] sm:h-[75vh] xl:h-[60vh] overflow-auto orders-list">
+                    {orders.length === 0 && !isFetching && (
+                        <div className="flex justify-center items-center h-full">
+                            <span className="text-lg text-gray-300">
+                                Start streaming by clicking on the green button
+                                above!
+                            </span>
+                        </div>
+                    )}
+                    {isFetching && (
+                        <div className="flex justify-center items-center h-full">
+                            <span className="text-lg text-gray-300">
+                                Fetching...
+                            </span>
+                        </div>
+                    )}
                     {orders.map((order, index) => (
                         <div
                             key={index}

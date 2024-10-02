@@ -5,6 +5,8 @@ interface WebSocketContextType {
     isStreaming: boolean;
     startStream: () => void;
     stopStream: () => void;
+    isFetching: boolean; // Add fetching state here
+    setIsFetching: (fetching: boolean) => void; // Add setter for fetching state
 }
 
 const WebSocketContext = createContext<WebSocketContextType | undefined>(
@@ -14,11 +16,15 @@ const WebSocketContext = createContext<WebSocketContextType | undefined>(
 export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({
     children,
 }) => {
-    const [isStreaming, setIsStreaming] = useState(false);
     const [socket, setSocket] = useState<WebSocket | null>(null);
+    const [isStreaming, setIsStreaming] = useState(false);
+    const [isFetching, setIsFetching] = useState(false); // Add fetching state
+
     const API_KEY = process.env.REACT_APP_API_KEY;
 
     const startStream = () => {
+        setIsFetching(true); // Set fetching to true when stream starts
+
         // Close existing socket if already streaming
         if (isStreaming && socket) {
             console.log('Closing existing socket...');
@@ -74,7 +80,14 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({
 
     return (
         <WebSocketContext.Provider
-            value={{ socket, isStreaming, startStream, stopStream }}
+            value={{
+                socket,
+                isStreaming,
+                startStream,
+                stopStream,
+                isFetching,
+                setIsFetching,
+            }}
         >
             {children}
         </WebSocketContext.Provider>
