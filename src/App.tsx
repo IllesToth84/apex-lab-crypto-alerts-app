@@ -1,26 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Monitor from './pages/Monitor';
+import Alerts from './pages/Alerts';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => {
+    return (
+        <Router>
+            <nav className="bg-customOrange shadow-lg py-4 px-12">
+                <div className="container mx-auto flex justify-between items-center">
+                    <div>
+                        <h1 className="title text-customLightGreen text-xl font-bold">
+                            Crypto Alerts
+                        </h1>
+                    </div>
+                    <ul className="flex space-x-6">
+                        <li>
+                            <Link
+                                to="/"
+                                className="text-customBlue hover:bg-customBlue hover:text-customLightGreen px-5 py-3 rounded transition duration-300 ease-in-out"
+                            >
+                                Monitor
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/alerts"
+                                className="text-customBlue hover:bg-customBlue hover:text-customLightGreen px-5 py-3 rounded transition duration-300 ease-in-out"
+                            >
+                                Alerts
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div className="container mx-auto">
+                <Routes>
+                    <Route path="/" element={<Monitor />} />
+                    <Route path="/alerts" element={<Alerts />} />
+                </Routes>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
