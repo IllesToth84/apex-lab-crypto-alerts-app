@@ -1,11 +1,75 @@
 // src/pages/Monitor.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useWebSocket } from '../WebSocketContext';
 
-const Monitor = () => {
+const Monitor: React.FC = () => {
+    const { socket } = useWebSocket();
+    const [orders, setOrders] = useState<any[]>([]);
+
+    useEffect(() => {
+        if (socket) {
+            let buffer: any[] = [];
+
+            const handleSocketMessage = (event: MessageEvent) => {
+                const message = JSON.parse(event.data);
+
+                if (message.TYPE === '8') {
+                    buffer.push(message);
+
+                    // Limit the size of the buffer
+                    if (buffer.length > 500) {
+                        buffer = buffer.slice(-500);
+                    }
+                }
+            };
+
+            socket.addEventListener('message', handleSocketMessage);
+
+            // Update the orders every 500 ms
+            const intervalId = setInterval(() => {
+                if (buffer.length > 0) {
+                    setOrders((prevOrders) =>
+                        [...prevOrders, ...buffer].slice(-500)
+                    );
+                    buffer = []; // Clear the buffer after each update
+                }
+            }, 500); // Update the state every 500 ms
+
+            return () => {
+                clearInterval(intervalId);
+                socket.removeEventListener('message', handleSocketMessage);
+            };
+        }
+    }, [socket]);
+
+    useEffect(() => {
+        console.log('Updated orders:', orders);
+    }, [orders]);
+
     return (
-        <div className="p-12">
-            <h1 className="text-3xl font-bold mb-3">Monitor Page</h1>
-            <p>This is where the live stream of orders will appear.</p>
+        <div className="py-6 px-4 md:p-12 text-white">
+            <h1 className="text-3xl font-bold mb-8">Live Binance Orders</h1>
+            <div className="border border-gray-700">
+                <div className="flex justify-between p-4 bg-gray-900 font-bold border border-white">
+                    <span>Price (USD)</span>
+                    <span>Quantity</span>
+                    <span>Total (USD)</span>
+                </div>
+                <div className="h-[60vh] sm:h-[75vh] xl:h-[60vh] overflow-auto orders-list">
+                    {orders.map((order, index) => (
+                        <div
+                            key={index}
+                            className={`flex justify-between p-4 border-b border-gray-700 ${
+                                order.SIDE === 0 ? 'bg-red-600' : 'bg-gray-800'
+                            }`}
+                        >
+                            <span>{order.P.toFixed(2)}</span>
+                            <span>{order.Q}</span>
+                            <span>{(order.P * order.Q).toFixed(2)}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 };
