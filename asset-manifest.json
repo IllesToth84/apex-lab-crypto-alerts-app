@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/apex-lab-crypto-alerts-app/static/css/main.2bf98373.css",
-    "main.js": "/apex-lab-crypto-alerts-app/static/js/main.1e40d713.js",
+    "main.js": "/apex-lab-crypto-alerts-app/static/js/main.f8d6ad84.js",
     "static/js/453.c61d59fc.chunk.js": "/apex-lab-crypto-alerts-app/static/js/453.c61d59fc.chunk.js",
     "index.html": "/apex-lab-crypto-alerts-app/index.html",
     "main.2bf98373.css.map": "/apex-lab-crypto-alerts-app/static/css/main.2bf98373.css.map",
-    "main.1e40d713.js.map": "/apex-lab-crypto-alerts-app/static/js/main.1e40d713.js.map",
+    "main.f8d6ad84.js.map": "/apex-lab-crypto-alerts-app/static/js/main.f8d6ad84.js.map",
     "453.c61d59fc.chunk.js.map": "/apex-lab-crypto-alerts-app/static/js/453.c61d59fc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2bf98373.css",
-    "static/js/main.1e40d713.js"
+    "static/js/main.f8d6ad84.js"
   ]
 }
