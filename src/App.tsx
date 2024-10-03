@@ -16,7 +16,10 @@ const App: React.FC = () => {
 
                 <div className="main-content container-fluid mx-auto">
                     <Routes>
-                        <Route path="/" element={<Main />} />
+                        <Route
+                            path="/apex-lab-crypto-alerts-app"
+                            element={<Main />}
+                        />
                         <Route path="/monitor" element={<Monitor />} />
                         <Route path="/alerts" element={<Alerts />} />
                     </Routes>

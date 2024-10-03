@@ -16,7 +16,7 @@ const Navbar = () => {
                 {/* Site Title */}
                 <div className="flex-1 text-left">
                     <h2 className="title text-white text-base md:text-xl font-bold">
-                        <a href="/">Crypto Alerts</a>
+                        <a href="/apex-lab-crypto-alerts-app">Crypto Alerts</a>
                     </h2>
                 </div>
                 {/* Web Socket Controls */}

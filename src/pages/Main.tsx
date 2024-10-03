@@ -14,15 +14,16 @@ const Main: React.FC = () => {
                 You can follow Binance BTC/USDT trading data live here.
             </h3>
             <p className="text-xl leading-9 mb-4">
-                Please navigate to the{' '}
-                <a href="/monitor" className="text-green-600 font-bold">
-                    "Monitor"
-                </a>{' '}
-                subpage and click <br></br>{' '}
+                Please click the{' '}
                 <span className="text-customLightGreen font-bold">
                     "Start Stream"
                 </span>{' '}
-                button to view the data.
+                button to start streaming<br></br>
+                and navigate to the{' '}
+                <a href="/monitor" className="text-green-600 font-bold">
+                    "Monitor"
+                </a>{' '}
+                page to view the data.
             </p>
             <p className="text-xl leading-9">
                 On the{' '}
