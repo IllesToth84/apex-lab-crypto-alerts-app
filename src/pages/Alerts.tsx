@@ -12,7 +12,8 @@ interface Alert {
 }
 
 const Alerts: React.FC = () => {
-    const { socket, isStreaming, startStream, setIsFetching } = useWebSocket();
+    const { socket, isStreaming, startStream, isFetching, setIsFetching } =
+        useWebSocket();
     const [alerts, setAlerts] = useState<Alert[]>([]);
     const [cheapOrderCount, setCheapOrderCount] = useState(0);
     const [solidOrderCount, setSolidOrderCount] = useState(0);
@@ -72,7 +73,14 @@ const Alerts: React.FC = () => {
                 socket.removeEventListener('message', handleWebSocketMessage);
             }
         };
-    }, [socket, isStreaming, startStream, setIsFetching]);
+    }, [socket, isStreaming, startStream, isFetching, setIsFetching]);
+
+    // Effect to check if the alerts list is empty and set loading accordingly
+    useEffect(() => {
+        if (alerts.length > 0) {
+            setIsFetching(false); // Stop loading when the first alert appears
+        }
+    }, [alerts, setIsFetching]); // Include setIsFetching in the dependency arrays
 
     return (
         <div className="py-8 md:py-6 px-4 md:p-12 text-white">
@@ -88,7 +96,7 @@ const Alerts: React.FC = () => {
             />
 
             {/* Recent Alerts Table component */}
-            <RecentAlertsTable alerts={alerts} />
+            <RecentAlertsTable alerts={alerts} isFetching={isFetching} />
         </div>
     );
 };

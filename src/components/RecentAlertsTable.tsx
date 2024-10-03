@@ -10,9 +10,13 @@ interface Alert {
 
 interface RecentAlertsTableProps {
     alerts: Alert[];
+    isFetching: boolean;
 }
 
-const RecentAlertsTable: React.FC<RecentAlertsTableProps> = ({ alerts }) => {
+const RecentAlertsTable: React.FC<RecentAlertsTableProps> = ({
+    alerts,
+    isFetching,
+}) => {
     return (
         <div className="border border-gray-700">
             <div className="stream-header flex p-4 bg-gray-900 font-bold border border-white">
@@ -30,6 +34,21 @@ const RecentAlertsTable: React.FC<RecentAlertsTableProps> = ({ alerts }) => {
                 </div>
             </div>
             <div className="h-[40vh] sm:h-[65vh] xl:h-[47.5vh] overflow-auto stream-list">
+                {alerts.length === 0 && !isFetching && (
+                    <div className="flex justify-center items-center h-full">
+                        <span className="text-lg text-gray-300 text-center">
+                            Start streaming by clicking on the green button
+                            above!
+                        </span>
+                    </div>
+                )}
+                {isFetching && (
+                    <div className="flex justify-center items-center h-full">
+                        <span className="text-lg text-gray-300">
+                            Fetching...
+                        </span>
+                    </div>
+                )}
                 {alerts.map((alert, index) => (
                     <div
                         key={index}
