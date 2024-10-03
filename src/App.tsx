@@ -9,19 +9,27 @@ import Monitor from './pages/Monitor';
 import Alerts from './pages/Alerts';
 
 const App: React.FC = () => {
+    const apexLabCryptoAlertsPath = '/apex-lab-crypto-alerts-app';
+
     return (
         <WebSocketProvider>
             <Router>
-                <Navbar />
+                <Navbar cryptoAlertsPath={apexLabCryptoAlertsPath} />
 
                 <div className="main-content container-fluid mx-auto">
                     <Routes>
                         <Route
-                            path="/apex-lab-crypto-alerts-app"
+                            path={apexLabCryptoAlertsPath}
                             element={<Main />}
                         />
-                        <Route path="/monitor" element={<Monitor />} />
-                        <Route path="/alerts" element={<Alerts />} />
+                        <Route
+                            path={`${apexLabCryptoAlertsPath}/monitor`}
+                            element={<Monitor />}
+                        />
+                        <Route
+                            path={`${apexLabCryptoAlertsPath}/alerts`}
+                            element={<Alerts />}
+                        />
                     </Routes>
                 </div>
             </Router>

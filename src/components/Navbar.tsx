@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useWebSocket } from '../context/WebSocketContext';
 
-const Navbar = () => {
+interface NavbarProps {
+    cryptoAlertsPath: string; // A prop típusa
+}
+
+const Navbar: React.FC<NavbarProps> = ({ cryptoAlertsPath }) => {
     const [isOpen, setIsOpen] = useState(false); // State for managing hamburger menu
 
     const toggleMenu = () => {
@@ -16,7 +20,7 @@ const Navbar = () => {
                 {/* Site Title */}
                 <div className="flex-1 text-left">
                     <h2 className="title text-white text-base md:text-xl font-bold">
-                        <a href="/apex-lab-crypto-alerts-app">Crypto Alerts</a>
+                        <a href={cryptoAlertsPath}>Crypto Alerts</a>
                     </h2>
                 </div>
                 {/* Web Socket Controls */}
@@ -41,7 +45,7 @@ const Navbar = () => {
                     <ul className="flex flex-col md:flex-row gap-6">
                         <li>
                             <NavLink
-                                to="/monitor"
+                                to={`${cryptoAlertsPath}/monitor`}
                                 className={({ isActive }) =>
                                     `text-white ${
                                         isActive ? 'bg-gray-900' : ''
@@ -53,7 +57,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <NavLink
-                                to="/alerts"
+                                to={`${cryptoAlertsPath}/alerts`}
                                 className={({ isActive }) =>
                                     `text-white ${
                                         isActive ? 'bg-gray-900' : ''
