@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/IllesToth84/apex-lab-crypto-alerts-app.git/static/css/main.2bf98373.css",
+    "main.js": "/IllesToth84/apex-lab-crypto-alerts-app.git/static/js/main.9c8fc5a6.js",
+    "static/js/453.c61d59fc.chunk.js": "/IllesToth84/apex-lab-crypto-alerts-app.git/static/js/453.c61d59fc.chunk.js",
+    "index.html": "/IllesToth84/apex-lab-crypto-alerts-app.git/index.html",
+    "main.2bf98373.css.map": "/IllesToth84/apex-lab-crypto-alerts-app.git/static/css/main.2bf98373.css.map",
+    "main.9c8fc5a6.js.map": "/IllesToth84/apex-lab-crypto-alerts-app.git/static/js/main.9c8fc5a6.js.map",
+    "453.c61d59fc.chunk.js.map": "/IllesToth84/apex-lab-crypto-alerts-app.git/static/js/453.c61d59fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2bf98373.css",
+    "static/js/main.9c8fc5a6.js"
+  ]
+}
