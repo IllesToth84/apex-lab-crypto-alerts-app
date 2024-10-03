@@ -1,6 +1,6 @@
 // src/pages/Monitor.tsx
 import React, { useEffect, useState } from 'react';
-import { useWebSocket } from '../WebSocketContext';
+import { useWebSocket } from '../context/WebSocketContext';
 
 const Monitor: React.FC = () => {
     const { socket, isFetching, setIsFetching } = useWebSocket();
@@ -50,18 +50,20 @@ const Monitor: React.FC = () => {
     }, [orders, setIsFetching]); // Include setIsFetching in the dependency arrays
 
     return (
-        <div className="py-6 px-4 md:p-12 text-white">
-            <h1 className="text-3xl font-bold mb-8">Live Binance Orders</h1>
+        <div className="py-8 md:py-6 px-4 md:p-12 text-white">
+            <h1 className="text-4xl text-center font-bold pb-8 md:pb-5">
+                Live Binance Orders
+            </h1>
             <div className="border border-gray-700">
                 <div className="flex justify-between p-4 bg-gray-900 font-bold border border-white">
                     <span>Price (USD)</span>
                     <span>Quantity</span>
                     <span>Total (USD)</span>
                 </div>
-                <div className="h-[60vh] sm:h-[75vh] xl:h-[60vh] overflow-auto orders-list">
+                <div className="h-[50vh] sm:h-[75vh] xl:h-[63vh] overflow-auto stream-list">
                     {orders.length === 0 && !isFetching && (
                         <div className="flex justify-center items-center h-full">
-                            <span className="text-lg text-gray-300">
+                            <span className="text-lg text-gray-300 text-center">
                                 Start streaming by clicking on the green button
                                 above!
                             </span>
@@ -81,9 +83,15 @@ const Monitor: React.FC = () => {
                                 order.SIDE === 0 ? 'bg-red-600' : 'bg-gray-800'
                             }`}
                         >
-                            <span>{order.P.toFixed(2)}</span>
-                            <span>{order.Q}</span>
-                            <span>{(order.P * order.Q).toFixed(2)}</span>
+                            <div className="flex-1 text-left">
+                                <span>{order.P.toFixed(2)}</span>
+                            </div>
+                            <div className="flex-1 text-center">
+                                <span>{order.Q}</span>
+                            </div>
+                            <div className="flex-1 text-right">
+                                <span>{(order.P * order.Q).toFixed(2)}</span>
+                            </div>
                         </div>
                     ))}
                 </div>

@@ -1,8 +1,8 @@
 // src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { WebSocketProvider } from './WebSocketContext';
-import Nav from './components/Nav';
+import { WebSocketProvider } from './context/WebSocketContext';
+import Navbar from './components/Navbar';
 
 import Main from './pages/Main';
 import Monitor from './pages/Monitor';
@@ -12,7 +12,7 @@ const App: React.FC = () => {
     return (
         <WebSocketProvider>
             <Router>
-                <Nav />
+                <Navbar />
 
                 <div className="main-content container-fluid mx-auto">
                     <Routes>

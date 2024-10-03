@@ -2,7 +2,7 @@ import React from 'react';
 
 const Main: React.FC = () => {
     return (
-        <div className="pt-32 md:pt-48 px-10 flex flex-col justify-center text-white text-center">
+        <div className="pt-12 md:pt-36 px-10 flex flex-col justify-center text-white text-center">
             <h1 className="text-5xl mb-12 leading-snug">
                 Welcome to the{' '}
                 <span className="text-customOrange font-bold">
@@ -10,13 +10,12 @@ const Main: React.FC = () => {
                 </span>{' '}
                 system!
             </h1>
-            <h3 className="text-[1.5rem] mb-6 text-customLightGreen italic">
-                You can follow <b className="not-italic">Binance BTC/USDT</b>{' '}
-                trading data live here.
+            <h3 className="text-[1.5rem] mb-12 text-customLightGreen italic">
+                You can follow Binance BTC/USDT trading data live here.
             </h3>
-            <p className="text-xl leading-9">
+            <p className="text-xl leading-9 mb-4">
                 Please navigate to the{' '}
-                <a href="/monitor" className="text-customOrange font-bold">
+                <a href="/monitor" className="text-green-600 font-bold">
                     "Monitor"
                 </a>{' '}
                 subpage and click <br></br>{' '}
@@ -24,6 +23,14 @@ const Main: React.FC = () => {
                     "Start Stream"
                 </span>{' '}
                 button to view the data.
+            </p>
+            <p className="text-xl leading-9">
+                On the{' '}
+                <a href="/alerts" className="text-red-500 font-bold">
+                    "Alerts"
+                </a>{' '}
+                subpage, you can see real-time alerts <br></br> for important
+                trading events.
             </p>
         </div>
     );
