@@ -43,7 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({ cryptoAlertsPath }) => {
                     } col-span-3 justify-center md:flex flex-1 md:justify-end pt-6 md:pt-0`}
                 >
                     <ul className="flex flex-col md:flex-row gap-6">
-                        <li>
+                        <li className="text-center">
                             <NavLink
                                 to={`${cryptoAlertsPath}/monitor`}
                                 className={({ isActive }) =>
@@ -55,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ cryptoAlertsPath }) => {
                                 Monitor
                             </NavLink>
                         </li>
-                        <li>
+                        <li className="text-center">
                             <NavLink
                                 to={`${cryptoAlertsPath}/alerts`}
                                 className={({ isActive }) =>
@@ -81,7 +81,7 @@ const WebSocketControls: React.FC = () => {
         <div className="flex items-center gap-8">
             <button
                 onClick={isStreaming ? stopStream : startStream}
-                className={`px-2 md:px-4 py-2 rounded ${
+                className={`w-32 py-3 rounded ${
                     isStreaming
                         ? 'bg-red-600 hover:bg-red-500'
                         : 'bg-green-600 hover:bg-green-500'

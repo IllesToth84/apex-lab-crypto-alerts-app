@@ -20,7 +20,7 @@ const MonitorTable: React.FC<MonitorTableProps> = ({ orders, isFetching }) => {
                 <span>Quantity</span>
                 <span>Total (USD)</span>
             </div>
-            <div className="h-[50vh] sm:h-[75vh] xl:h-[63vh] overflow-auto stream-list">
+            <div className="h-[75vh] xl:h-[63vh] overflow-auto stream-list">
                 {orders.length === 0 && !isFetching && (
                     <div className="flex justify-center items-center h-full">
                         <span className="text-lg text-gray-300 text-center">

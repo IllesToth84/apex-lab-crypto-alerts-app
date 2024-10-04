@@ -33,7 +33,7 @@ const RecentAlertsTable: React.FC<RecentAlertsTableProps> = ({
                     <span>Total (USD)</span>
                 </div>
             </div>
-            <div className="h-[40vh] sm:h-[65vh] xl:h-[47.5vh] overflow-auto stream-list">
+            <div className="h-[65vh] xl:h-[47.5vh] overflow-auto stream-list">
                 {alerts.length === 0 && !isFetching && (
                     <div className="flex justify-center items-center h-full">
                         <span className="text-lg text-gray-300 text-center">
